@@ -26,7 +26,7 @@ const App = () => {
 
 	return (
 		<section className='container'>
-			<h1>Button Logger v1</h1>
+			<h1>Button Logger</h1>
 			<table>
 				<header className='table-row'>
 					<div className='table-cell'>id</div>
