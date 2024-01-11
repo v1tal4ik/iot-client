@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import { socket } from './assets/api';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { IJournalItem } from './interfaces';
+import LogItem from './components/log-item';
+
+import './assets/_normalize.scss';
+import './style.scss';
+
+const App = () => {
+	const [items, setItems] = useState<IJournalItem[]>([]);
+
+	useEffect(() => {
+		socket.on('connect', () => {
+			console.log('Connected to server');
+		});
+
+		socket.on('toggle', (item: IJournalItem) => {
+			setItems((prev) => [...prev, item]);
+		});
+
+		socket.on('disconnect', () => {
+			console.log('Disconnected from server');
+		});
+	}, []);
+
+	return (
+		<section className='container'>
+			<h1>Button Logger</h1>
+			<table>
+				<header className='table-row'>
+					<div className='table-cell'>id</div>
+					<div className='table-cell'>author</div>
+					<div className='table-cell'>date</div>
+					<div className='table-cell'>status</div>
+				</header>
+
+				{items.length > 0 && (
+					<div className='table-items__scrollable'>
+						{items.map((note) => (
+							<LogItem key={note.id} {...note} />
+						))}
+					</div>
+				)}
+			</table>
+		</section>
+	);
+};
 
 export default App;

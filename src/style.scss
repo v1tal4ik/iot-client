@@ -1,0 +1,148 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	height: 100vh;
+	margin: 0;
+	padding: 40px;
+	background: #f4f7f8;
+	color: #203b54;
+
+	h1 {
+		text-align: center;
+		font-size: 48px;
+	}
+
+	button {
+		padding: 8px 10px;
+		background: #fff;
+		margin-right: 10px;
+	}
+
+	table {
+		width: 100%;
+		margin: 20px auto;
+		border: 1px solid #f2f4f8;
+		border-radius: 12px;
+		background: #fff;
+
+		header.table-row {
+			.table-cell {
+				text-transform: uppercase;
+				font-weight: 700;
+				position: sticky;
+			}
+		}
+
+		.table-row {
+			display: grid;
+			align-items: center;
+			grid-template-columns: repeat(4, minmax(100px, 1fr));
+			.table-cell {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 80px;
+				padding: 10px;
+				text-align: center;
+				border: 1px solid #f2f4f8;
+				.table-body {
+					width: 80px;
+					margin: 0 auto;
+					border-radius: 8px;
+					padding: 8px 10px;
+					&.on {
+						color: #0c9d61;
+						background: #e5f5ec;
+					}
+					&.off {
+						color: #d64040;
+						background: #fee4e2;
+					}
+				}
+			}
+		}
+
+		// Scrool wrapper
+
+		.table-items__scrollable {
+			overflow-y: auto;
+			overflow-x: hidden;
+			height: calc(100vh - 225px);
+		}
+	}
+
+	// table {
+	// 	border: 1px solid #f2f4f8;
+	// 	border-radius: 12px;
+	// 	background: #fff;
+
+	// 	header {
+	// 		&.table-row {
+	// 			.table-cell {
+	// 				font-size: 12px;
+	// 				text-transform: uppercase;
+	// 				color: #222;
+	// 				font-weight: 500;
+	// 			}
+	// 		}
+	// 	}
+
+	// 	.table-row {
+	// 		display: grid;
+	// 		align-items: center;
+	// 		grid-auto-flow: column;
+
+	// 		.table-cell {
+	// 			width: 100%;
+	// 			height: 50px;
+	// 			padding: 16px;
+	// 			font-size: 14px;
+
+	// 			display: flex;
+	// 			justify-content: flex-start;
+	// 			align-items: center;
+
+	// 			color: var(--base-text);
+	// 			border: 1px solid red;
+
+	// 			.table-body {
+	// 				font-size: 14px;
+	// 				display: -webkit-box;
+	// 				-webkit-line-clamp: 2;
+	// 				-webkit-box-orient: vertical;
+	// 				overflow: hidden;
+	// 			}
+	// 		}
+	// 	}
+
+	// // Scrool wrapper
+
+	// .table-items__scrollable {
+	// 	overflow-y: auto;
+	// 	overflow-x: hidden;
+	// 	height: calc(100vh - 457px);
+	// }
+	// }
+}
+
+@media only screen and (max-width: 768px) {
+	.container {
+		padding: 10px;
+		h1 {
+			font-size: 30px;
+		}
+		* {
+			font-size: 10px;
+		}
+
+		table {
+			.table-row {
+				grid-template-columns: repeat(4, minmax(60px, 1fr));
+			}
+		}
+	}
+}
